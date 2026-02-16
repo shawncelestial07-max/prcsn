@@ -37,19 +37,32 @@ header.hero{
   background:var(--dark-gray);
 }
 header.hero h1{
-  font-size:3rem;letter-spacing:4px;font-weight:900;
-  color:#e6e6e6;
-  text-shadow:2px 2px 0 #b0b0b0,4px 4px 0 #999,6px 6px 0 #666,-2px -2px 0 #fff;
+  font-size:3rem;
+  font-weight:900;
+  color: var(--white);  /* Simple White */
+  letter-spacing: 2px;  
+  text-shadow: none;    /* No shadow */
   margin-bottom:15px;
 }
-header.hero p{font-size:1.2rem;color:var(--gray);margin-bottom:25px;}
+header.hero p{
+  font-size:1.2rem;
+  color:var(--gray);
+  margin-bottom:25px;
+}
 header.hero button{
-  background:var(--cta-color);color:var(--black);
-  border:none;border-radius:50px;padding:12px 28px;
-  font-weight:600;font-size:1rem;cursor:pointer;
+  background:var(--cta-color);
+  color:var(--black);
+  border:none;
+  border-radius:50px;
+  padding:12px 28px;
+  font-weight:600;
+  font-size:1rem;
+  cursor:pointer;
   transition:background 0.3s;
 }
-header.hero button:hover{background:var(--highlight);}
+header.hero button:hover{
+  background:var(--highlight);
+}
 
 /* === Sections === */
 section{padding:50px 15px;}
