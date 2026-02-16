@@ -13,6 +13,7 @@
   --accent:#f0f0f0;
   --highlight:#e6e6e6;
   --cta-color:#f0f0f0;
+  --metallic-gradient: linear-gradient(45deg, #f0f0f0, #c0c0c0, #e6e6e6);
 }
 
 /* === Global === */
@@ -20,48 +21,51 @@
 body{background:var(--black);color:var(--white);line-height:1.6;scroll-behavior:smooth;}
 a{text-decoration:none;color:inherit;}
 
-/* === Navigation === */
+/* === Navigation with minimal icons === */
 nav{
   position:sticky;top:0;z-index:100;
   background:var(--dark-gray);
   display:flex;justify-content:space-around;padding:12px 0;
   border-bottom:1px solid rgba(255,255,255,0.15);
 }
-nav a{font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;transition:color 0.3s;}
+nav a{
+  font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;
+  display:flex;align-items:center;gap:5px;
+  transition:color 0.3s;
+}
+nav a span.icon{font-size:1.1rem;color:var(--accent);}
 nav a:hover{color:var(--highlight);}
 
-/* === Hero === */
+/* === Hero Section with Parallax === */
 header.hero{
+  position:relative;
   text-align:center;
-  padding:100px 20px 60px 20px;
-  background:var(--dark-gray);
+  padding:120px 20px 80px 20px;
+  background: url('images/hero-background.jpg') center/cover no-repeat;
+  overflow:hidden;
+}
+header.hero::before{
+  content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.5);
+  z-index:0;
 }
 header.hero h1{
-  font-size:3rem;
-  font-weight:900;
-  color: var(--white);  /* Simple White */
-  letter-spacing: 2px;  
-  text-shadow: none;    /* No shadow */
-  margin-bottom:15px;
+  position:relative;
+  font-size:3rem;font-weight:900;color:var(--white);letter-spacing:2px;
+  margin-bottom:15px;z-index:1;
 }
 header.hero p{
-  font-size:1.2rem;
-  color:var(--gray);
-  margin-bottom:25px;
+  position:relative;font-size:1.2rem;color:var(--gray);margin-bottom:25px;z-index:1;
 }
 header.hero button{
-  background:var(--cta-color);
-  color:var(--black);
-  border:none;
-  border-radius:50px;
-  padding:12px 28px;
-  font-weight:600;
-  font-size:1rem;
-  cursor:pointer;
-  transition:background 0.3s;
+  position:relative;background:var(--cta-color);
+  background-image: var(--metallic-gradient);
+  color: var(--black);
+  border:none;border-radius:50px;padding:12px 28px;
+  font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.3s;z-index:1;
 }
 header.hero button:hover{
-  background:var(--highlight);
+  filter: brightness(1.2);
 }
 
 /* === Sections === */
@@ -79,13 +83,22 @@ section{padding:50px 15px;}
 .product-card{
   flex:0 0 80%;scroll-snap-align:start;
   background:var(--dark-gray);border-radius:12px;padding:20px;text-align:center;
-  transition:transform 0.3s,box-shadow 0.3s;
+  transition:transform 0.3s,box-shadow 0.3s, border 0.3s;
+  border: 1px solid rgba(255,255,255,0.05);
 }
-.product-card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.5);}
+.product-card:hover{
+  transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  border: 1px solid #f0f0f0; /* metallic accent */
+}
 .product-card img{width:100%;border-radius:8px;max-height:300px;margin-bottom:15px;background:#111;object-fit:cover;}
 .product-card h3{font-size:1.1rem;margin-bottom:8px;font-weight:600;}
 .product-card .price{color:var(--gray);margin-bottom:12px;font-weight:500;}
-.product-card button{padding:10px 25px;background-color:var(--accent);border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.95rem;}
+.product-card button{
+  padding:10px 25px;
+  background:var(--accent);
+  border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.95rem;
+  transition:all 0.3s;
+}
 .product-card button:hover{background-color:var(--gray);color:var(--black);}
 
 /* === About Section with gradient animation === */
@@ -100,7 +113,6 @@ section{padding:50px 15px;}
 }
 .about h2{margin-bottom:20px;color:var(--accent);font-size:2rem;font-weight:700;}
 .about p{max-width:350px;margin:0 auto;color:var(--gray);font-size:1rem;line-height:1.6;}
-
 @keyframes gradientShift{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
@@ -122,6 +134,7 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
   padding:12px 20px;border-radius:50px;font-weight:600;
   font-size:1rem;cursor:pointer;z-index:150;
   box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  background-image: var(--metallic-gradient);
 }
 
 /* === Responsive === */
@@ -139,14 +152,14 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
 </head>
 <body>
 
-<!-- Navigation -->
+<!-- Navigation with icons -->
 <nav>
-  <a href="#" id="nav-products">Products</a>
-  <a href="#" id="nav-about">About</a>
-  <a href="#contact">Contact</a>
+  <a href="#" id="nav-products"><span class="icon">🛒</span>Products</a>
+  <a href="#" id="nav-about"><span class="icon">ℹ️</span>About</a>
+  <a href="#contact"><span class="icon">📞</span>Contact</a>
 </nav>
 
-<!-- Hero -->
+<!-- Hero Section -->
 <header class="hero">
   <h1>PRCSN.Co</h1>
   <p>Crafted with Accuracy & Style</p>
