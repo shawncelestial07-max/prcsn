@@ -1,79 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PRCSN.Co - PRECISION Clothing</title>
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+  <style>
+    /* === Black & Gray Theme === */
+    :root {
+      --black: #0a0a0a;
+      --dark-gray: #1c1c1c;
+      --gray: #888888;
+      --white: #ffffff;
+      --accent: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* === Hero Section === */
+    header.hero {
+      text-align: center;
+      padding: 120px 20px 80px 20px;
+      background: var(--dark-gray);
+    }
+
+    /* Chrome Text Effect */
+    header.hero h1 {
+      font-size: 4rem;
+      letter-spacing: 4px;
+      background: linear-gradient(
+        145deg,
+        #e0e0e0,
+        #c0c0c0,
+        #f8f8f8,
+        #a0a0a0
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    header.hero p {
+      font-size: 1.4rem;
+      color: var(--gray);
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* === Products Section === */
+    .products {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .products h2 {
+      margin-bottom: 30px;
+      color: var(--accent);
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: var(--dark-gray);
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 5px;
+      object-fit: contain;
+      max-height: 350px;
+      background: #111;
+      padding: 10px;
+    }
+
+    .product-card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .product-card .price {
+      color: var(--gray);
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .product-card button {
+      padding: 10px 20px;
+      background-color: var(--accent);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .product-card button:hover {
+      background-color: var(--gray);
+      color: var(--black);
+    }
+
+    /* === About Section === */
+    .about {
+      padding: 50px 20px;
+      text-align: center;
+      background-color: var(--dark-gray);
+    }
+
+    .about h2 {
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .about p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+
+    /* === Contact Section === */
+    .contact {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .contact p {
+      margin: 5px 0;
+      color: var(--gray);
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: var(--dark-gray);
+      color: var(--gray);
+    }
+
+    /* === Responsive === */
+    @media screen and (max-width: 768px) {
+      .product-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header.hero h1 {
+        font-size: 3rem;
+      }
+
+      header.hero p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Hero Section -->
   <header class="hero">
     <h1>PRCSN.Co</h1>
-    <p>Precision Clothing – Style in Every Stitch</p>
+    <p>Crafted with accuracy</p>
   </header>
 
   <!-- Products Section -->
   <section class="products">
     <h2>Our Active T-Shirts</h2>
     <div class="product-list">
+      <!-- T-shirt 1 -->
       <div class="product-card">
-        <img src="images/tshirt1.png" alt="T-shirt 1">
+        <img src="images/tshirt1.png" alt="Black Minimalist Tee" />
         <h3>Black Minimalist Tee</h3>
         <p class="price">$25</p>
-        <button onclick="selectProduct('tshirt1', 'Black Minimalist Tee', 25)">Order</button>
+        <button>Buy Now</button>
       </div>
+
+      <!-- T-shirt 2 -->
       <div class="product-card">
-        <img src="images/tshirt2.png" alt="T-shirt 2">
-        <h3>Gray Urban Tee</h3>
+        <img src="images/tshirt2.png" alt="Blue Sharp Moves Tee" />
+        <h3>Blue Sharp Moves Tee</h3>
         <p class="price">$28</p>
-        <button onclick="selectProduct('tshirt2', 'Gray Urban Tee', 28)">Order</button>
+        <button>Buy Now</button>
       </div>
+
+      <!-- T-shirt 3 -->
       <div class="product-card">
-        <img src="images/tshirt3.png" alt="T-shirt 3">
-        <h3>Black Streetwear Tee</h3>
+        <img src="images/tshirt3.png" alt="Black Sharp Moves Tee" />
+        <h3>Black Sharp Moves Tee</h3>
         <p class="price">$30</p>
-        <button onclick="selectProduct('tshirt3', 'Black Streetwear Tee', 30)">Order</button>
+        <button>Buy Now</button>
       </div>
     </div>
   </section>
 
-  <!-- Order Section -->
-  <section class="order">
-    <h2>Place Your Order</h2>
-    <form id="orderForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <input type="text" id="product" placeholder="Product Name" readonly required>
-      <input type="number" id="quantity" placeholder="Quantity" min="1" value="1" required>
-      <button type="submit">Submit Order</button>
-    </form>
-    <p id="statusMessage"></p>
+  <!-- About Section -->
+  <section class="about">
+    <h2>About PRCSN.Co</h2>
+    <p>
+      PRCSN.Co brings you carefully crafted clothing with a focus on precision and
+      style. Our tees are designed for comfort, durability, and urban aesthetic.
+    </p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: contact@prcsn.co</p>
+    <p>Instagram: @PRCSN.Co</p>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 PRCSN.Co. All rights reserved.</p>
   </footer>
-
-  <!-- Firebase Config -->
-  <script>
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-  </script>
-  
-  <!-- Main JS -->
-  <script src="js/main.js"></script>
 </body>
 </html>
