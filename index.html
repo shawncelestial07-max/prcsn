@@ -2,53 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PRCSN.Co - PRECISION Clothing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRCSN.Co - Precision Clothing</title>
   <style>
-    /* === Black & Gray Theme === */
+    /* === Root Colors === */
     :root {
       --black: #0a0a0a;
       --dark-gray: #1c1c1c;
       --gray: #888888;
       --white: #ffffff;
       --accent: #f0f0f0;
+      --chrome-gradient: linear-gradient(
+        145deg,
+        #e6e6e6,
+        #cfd1d3,
+        #f8f8f8,
+        #b0b0b0
+      );
     }
 
+    /* === Global Styles === */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Arial", sans-serif;
+      font-family: "Poppins", "Arial", sans-serif;
     }
 
     body {
       background-color: var(--black);
       color: var(--white);
       line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    /* === Hero Section === */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* === Header / Hero === */
     header.hero {
       text-align: center;
       padding: 120px 20px 80px 20px;
       background: var(--dark-gray);
+      position: relative;
+      overflow: hidden;
     }
 
     /* Chrome Text Effect */
     header.hero h1 {
       font-size: 4rem;
       letter-spacing: 4px;
-      background: linear-gradient(
-        145deg,
-        #e0e0e0,
-        #c0c0c0,
-        #f8f8f8,
-        #a0a0a0
-      );
+      font-weight: 900;
+      background: var(--chrome-gradient);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    header.hero h1:hover {
+      transform: scale(1.05);
     }
 
     header.hero p {
@@ -60,64 +76,77 @@
 
     /* === Products Section === */
     .products {
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
+      background: var(--black);
     }
 
     .products h2 {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       color: var(--accent);
+      font-size: 2.5rem;
+      letter-spacing: 1px;
     }
 
     .product-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      justify-items: center;
     }
 
     .product-card {
       background-color: var(--dark-gray);
       padding: 20px;
-      border-radius: 10px;
-      width: 280px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 300px;
       text-align: center;
-      transition: transform 0.2s;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
 
     .product-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
 
     .product-card img {
       width: 100%;
-      border-radius: 5px;
-      object-fit: contain;
+      border-radius: 8px;
+      object-fit: cover;
       max-height: 350px;
       background: #111;
       padding: 10px;
+      transition: transform 0.3s;
+    }
+
+    .product-card img:hover {
+      transform: scale(1.05);
     }
 
     .product-card h3 {
       margin: 15px 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
     }
 
     .product-card .price {
       color: var(--gray);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       font-weight: bold;
       font-size: 1.1rem;
     }
 
     .product-card button {
-      padding: 10px 20px;
+      padding: 10px 25px;
       background-color: var(--accent);
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
       letter-spacing: 1px;
-      transition: background-color 0.2s, color 0.2s;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .product-card button:hover {
@@ -127,59 +156,82 @@
 
     /* === About Section === */
     .about {
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
       background-color: var(--dark-gray);
     }
 
     .about h2 {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: var(--accent);
+      font-size: 2.5rem;
+      letter-spacing: 1px;
     }
 
     .about p {
-      max-width: 600px;
+      max-width: 700px;
       margin: 0 auto;
       color: var(--gray);
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     /* === Contact Section === */
     .contact {
-      padding: 50px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
 
     .contact h2 {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: var(--accent);
+      font-size: 2.5rem;
+      letter-spacing: 1px;
     }
 
     .contact p {
-      margin: 5px 0;
+      margin: 8px 0;
       color: var(--gray);
+      font-size: 1.1rem;
     }
 
     /* === Footer === */
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       background-color: var(--dark-gray);
       color: var(--gray);
+      font-size: 0.95rem;
     }
 
     /* === Responsive === */
     @media screen and (max-width: 768px) {
-      .product-list {
-        flex-direction: column;
-        align-items: center;
-      }
-
       header.hero h1 {
         font-size: 3rem;
       }
 
       header.hero p {
         font-size: 1.2rem;
+      }
+
+      .products h2,
+      .about h2,
+      .contact h2 {
+        font-size: 2rem;
+      }
+
+      .product-card {
+        max-width: 90%;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      header.hero {
+        padding: 80px 15px 50px 15px;
+      }
+
+      .product-list {
+        gap: 20px;
       }
     }
   </style>
@@ -188,14 +240,13 @@
   <!-- Hero Section -->
   <header class="hero">
     <h1>PRCSN.Co</h1>
-    <p>Crafted with accuracy</p>
+    <p>Crafted with Accuracy & Style</p>
   </header>
 
   <!-- Products Section -->
   <section class="products">
     <h2>Our Active T-Shirts</h2>
     <div class="product-list">
-      <!-- T-shirt 1 -->
       <div class="product-card">
         <img src="images/tshirt1.png" alt="Black Minimalist Tee" />
         <h3>Black Minimalist Tee</h3>
@@ -203,7 +254,6 @@
         <button>Buy Now</button>
       </div>
 
-      <!-- T-shirt 2 -->
       <div class="product-card">
         <img src="images/tshirt2.png" alt="Blue Sharp Moves Tee" />
         <h3>Blue Sharp Moves Tee</h3>
@@ -211,7 +261,6 @@
         <button>Buy Now</button>
       </div>
 
-      <!-- T-shirt 3 -->
       <div class="product-card">
         <img src="images/tshirt3.png" alt="Black Sharp Moves Tee" />
         <h3>Black Sharp Moves Tee</h3>
@@ -225,8 +274,7 @@
   <section class="about">
     <h2>About PRCSN.Co</h2>
     <p>
-      PRCSN.Co brings you carefully crafted clothing with a focus on precision and
-      style. Our tees are designed for comfort, durability, and urban aesthetic.
+      PRCSN.Co delivers carefully crafted clothing designed with precision and style. Our tees combine comfort, durability, and a modern urban aesthetic for those who value quality and design.
     </p>
   </section>
 
