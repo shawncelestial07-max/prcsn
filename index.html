@@ -14,6 +14,7 @@
   --highlight:#e6e6e6;
   --cta-color:#f0f0f0;
   --metallic-gradient: linear-gradient(45deg, #f0f0f0, #c0c0c0, #e6e6e6);
+  --shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 /* === Global === */
@@ -29,20 +30,20 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.15);
 }
 nav a{
-  font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.85rem; /* slightly smaller */
+  font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.85rem; /* smaller text */
   display:flex;align-items:center;gap:5px;
   transition:color 0.3s;
 }
 nav a span.icon{font-size:1.1rem;color:var(--gray);} /* all icons gray */
 nav a:hover{color:var(--highlight);}
 
-/* === Hero Section with parallax and adjusted tagline spacing === */
+/* === Hero Section with parallax and cursive tagline === */
 header.hero{
   position:relative;
   text-align:center;
-  padding:100px 20px 60px 20px; /* slightly reduced padding for mobile */
+  padding:100px 20px 60px 20px; /* slightly reduced for mobile */
   background: url('images/hero-background.jpg') center/cover no-repeat;
-  background-attachment: fixed; /* subtle parallax */
+  background-attachment: fixed;
   overflow:hidden;
 }
 header.hero::before{
@@ -56,7 +57,7 @@ header.hero h1{
   font-weight:900;
   color:var(--white);
   letter-spacing:2px;
-  margin-bottom:8px; /* reduced to bring tagline closer */
+  margin-bottom:8px;
   z-index:1;
 }
 header.hero p{
@@ -64,6 +65,7 @@ header.hero p{
   font-size:1.2rem;
   color:var(--gray);
   margin-bottom:25px;
+  font-family: "Dancing Script", cursive; /* cursive font */
   z-index:1;
 }
 header.hero button{
@@ -73,6 +75,7 @@ header.hero button{
   color: var(--black);
   border:none;border-radius:50px;padding:12px 28px;
   font-weight:600;font-size:1rem;cursor:pointer;transition:all 0.3s;z-index:1;
+  box-shadow: var(--shadow);
 }
 header.hero button:hover{
   filter: brightness(1.2);
@@ -95,12 +98,16 @@ section{padding:50px 15px;}
   background:var(--dark-gray);border-radius:12px;padding:20px;text-align:center;
   transition:transform 0.3s,box-shadow 0.3s, border 0.3s;
   border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: var(--shadow);
 }
 .product-card:hover{
-  transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.5);
   border: 1px solid #f0f0f0; /* metallic accent */
 }
-.product-card img{width:100%;border-radius:8px;max-height:300px;margin-bottom:15px;background:#111;object-fit:cover;}
+.product-card img{
+  width:100%;border-radius:8px;max-height:300px;margin-bottom:15px;background:#111;object-fit:cover;
+  display:block;loading:lazy; /* lazy load */
+}
 .product-card h3{font-size:1.1rem;margin-bottom:8px;font-weight:600;}
 .product-card .price{color:var(--gray);margin-bottom:12px;font-weight:500;}
 .product-card button{
@@ -108,6 +115,7 @@ section{padding:50px 15px;}
   background:var(--accent);
   border:none;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.95rem;
   transition:all 0.3s;
+  box-shadow: var(--shadow);
 }
 .product-card button:hover{background-color:var(--gray);color:var(--black);}
 
@@ -120,6 +128,7 @@ section{padding:50px 15px;}
   border-radius:12px;
   padding:50px 20px;
   margin:20px 0;
+  box-shadow: var(--shadow);
 }
 .about h2{margin-bottom:20px;color:var(--accent);font-size:2rem;font-weight:700;}
 .about p{max-width:350px;margin:0 auto;color:var(--gray);font-size:1rem;line-height:1.6;}
@@ -143,7 +152,7 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
   background:var(--cta-color);color:var(--black);
   padding:12px 20px;border-radius:50px;font-weight:600;
   font-size:1rem;cursor:pointer;z-index:150;
-  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: var(--shadow);
   background-image: var(--metallic-gradient);
 }
 
@@ -160,6 +169,10 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
   .about p,.contact p{font-size:0.95rem;max-width:90%;}
 }
 </style>
+
+<!-- Google Fonts for Cursive -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -182,19 +195,19 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
   <h2>Our Active T-Shirts</h2>
   <div class="carousel">
     <div class="product-card">
-      <img src="images/tshirt1.png" alt="Black Minimalist Tee">
+      <img src="images/tshirt1.webp" alt="Black Minimalist Tee" loading="lazy">
       <h3>Black Minimalist Tee</h3>
       <p class="price">$25</p>
       <button>Buy Now</button>
     </div>
     <div class="product-card">
-      <img src="images/tshirt2.png" alt="Blue Sharp Moves Tee">
+      <img src="images/tshirt2.webp" alt="Blue Sharp Moves Tee" loading="lazy">
       <h3>Blue Sharp Moves Tee</h3>
       <p class="price">$28</p>
       <button>Buy Now</button>
     </div>
     <div class="product-card">
-      <img src="images/tshirt3.png" alt="Black Sharp Moves Tee">
+      <img src="images/tshirt3.webp" alt="Black Sharp Moves Tee" loading="lazy">
       <h3>Black Sharp Moves Tee</h3>
       <p class="price">$30</p>
       <button>Buy Now</button>
