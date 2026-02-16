@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PRCSN.Co - Precision Clothing</title>
   <style>
-    /* === Root Colors === */
     :root {
       --black: #0a0a0a;
       --dark-gray: #1c1c1c;
@@ -13,51 +12,27 @@
       --white: #ffffff;
       --accent: #f0f0f0;
       --highlight: #e6e6e6;
+      --cta-color: #f0f0f0;
     }
 
-    /* === Global Styles === */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", "Arial", sans-serif;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; font-family:"Poppins","Arial",sans-serif;}
+    body { background-color: var(--black); color: var(--white); line-height:1.6; scroll-behavior:smooth;}
 
-    body {
-      background-color: var(--black);
-      color: var(--white);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color:inherit; text-decoration:none; }
 
     /* === Sticky Navigation === */
     nav {
       position: sticky;
-      top: 0;
+      top:0;
       background: var(--dark-gray);
-      z-index: 100;
       display: flex;
       justify-content: space-around;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.15);
+      z-index: 100;
     }
-
-    nav a {
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--highlight);
-    }
+    nav a { font-weight:600; text-transform:uppercase; letter-spacing:1px; font-size:0.9rem; transition: color 0.3s; }
+    nav a:hover { color: var(--highlight); }
 
     /* === Hero Section === */
     header.hero {
@@ -65,203 +40,107 @@
       padding: 100px 15px 60px 15px;
       background: var(--dark-gray);
     }
-
     header.hero h1 {
       font-size: 3rem;
       letter-spacing: 4px;
       font-weight: 900;
       color: #e6e6e6;
-      text-shadow:
-        2px 2px 0 #b0b0b0,
-        4px 4px 0 #999999,
-        6px 6px 0 #666666,
-        -2px -2px 0 #ffffff;
+      text-shadow: 2px 2px 0 #b0b0b0, 4px 4px 0 #999, 6px 6px 0 #666, -2px -2px 0 #fff;
       margin-bottom: 15px;
     }
-
-    header.hero p {
-      font-size: 1.2rem;
-      color: var(--gray);
-      letter-spacing: 0.5px;
+    header.hero p { font-size: 1.2rem; color: var(--gray); margin-bottom:20px; }
+    header.hero button {
+      background: var(--cta-color);
+      border:none; border-radius:6px;
+      padding:12px 25px; font-weight:600; cursor:pointer;
+      font-size:1rem; color: var(--black); transition: background 0.3s;
     }
+    header.hero button:hover { background: var(--highlight); }
 
-    /* === Products Section === */
-    .products {
-      padding: 50px 15px;
-      text-align: center;
-      background: var(--black);
+    /* === Sections === */
+    section { padding:50px 15px; }
+    .hidden { display:none; }
+
+    /* === Products Carousel === */
+    .products { text-align:center; background: var(--black); }
+    .products h2 { margin-bottom:30px; color: var(--accent); font-size:2rem; font-weight:700; }
+    .carousel {
+      display:flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 15px;
+      padding-bottom: 10px;
     }
-
-    .products h2 {
-      margin-bottom: 30px;
-      color: var(--accent);
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .product-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-
+    .carousel::-webkit-scrollbar { display:none; }
     .product-card {
+      flex:0 0 80%;
+      scroll-snap-align:start;
       background-color: var(--dark-gray);
-      padding: 20px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 350px;
-      text-align: center;
+      border-radius:12px;
+      padding:20px;
+      text-align:center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .product-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    }
-
-    .product-card img {
-      width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
-      max-height: 300px;
-      background: #111;
-      margin-bottom: 15px;
-      transition: transform 0.3s;
-    }
-
-    .product-card img:hover {
-      transform: scale(1.05);
-    }
-
-    .product-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .product-card .price {
-      color: var(--gray);
-      margin-bottom: 12px;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+    .product-card img { width:100%; border-radius:8px; max-height:300px; margin-bottom:15px; background:#111; object-fit:cover; }
+    .product-card h3 { font-size:1.1rem; margin-bottom:8px; font-weight:600; }
+    .product-card .price { color: var(--gray); margin-bottom:12px; font-weight:500; }
     .product-card button {
-      padding: 10px 25px;
+      padding:10px 25px;
       background-color: var(--accent);
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      letter-spacing: 1px;
-      font-size: 0.95rem;
-      transition: background-color 0.3s, color 0.3s;
+      border:none; border-radius:6px;
+      cursor:pointer; font-weight:600; font-size:0.95rem;
     }
-
-    .product-card button:hover {
-      background-color: var(--gray);
-      color: var(--black);
-    }
+    .product-card button:hover { background-color: var(--gray); color: var(--black); }
 
     /* === About Section === */
-    .about {
-      padding: 50px 15px;
-      text-align: center;
-      background-color: var(--dark-gray);
-    }
-
-    .about h2 {
-      margin-bottom: 20px;
-      color: var(--accent);
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    .about p {
-      max-width: 350px;
-      margin: 0 auto;
-      color: var(--gray);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+    .about { text-align:center; background-color: var(--dark-gray);}
+    .about h2 { margin-bottom:20px; color: var(--accent); font-size:2rem; font-weight:700;}
+    .about p { max-width:350px; margin:0 auto; color: var(--gray); font-size:1rem; line-height:1.6; }
 
     /* === Contact Section === */
-    .contact {
-      padding: 50px 15px;
-      text-align: center;
-    }
-
-    .contact h2 {
-      margin-bottom: 20px;
-      color: var(--accent);
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    .contact p {
-      margin: 6px 0;
-      color: var(--gray);
-      font-size: 1rem;
-    }
+    .contact { text-align:center; }
+    .contact h2 { margin-bottom:20px; color: var(--accent); font-size:2rem; font-weight:700; }
+    .contact p { margin:6px 0; color: var(--gray); font-size:1rem; }
 
     /* === Footer === */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: var(--dark-gray);
-      color: var(--gray);
-      font-size: 0.9rem;
+    footer { text-align:center; padding:20px; background-color: var(--dark-gray); color: var(--gray); font-size:0.9rem; }
+
+    /* === Floating Buy Now Button === */
+    .floating-buy {
+      position: fixed;
+      bottom:20px;
+      right:20px;
+      background: var(--cta-color);
+      color: var(--black);
+      padding:12px 20px;
+      border-radius:50px;
+      font-weight:600;
+      font-size:1rem;
+      cursor:pointer;
+      z-index:150;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
-    /* === Responsive Adjustments === */
-    @media (max-width: 400px) {
-      header.hero h1 {
-        font-size: 2.2rem;
-      }
-
-      header.hero p {
-        font-size: 1rem;
-      }
-
-      .products h2, .about h2, .contact h2 {
-        font-size: 1.8rem;
-      }
-
-      .product-card {
-        max-width: 100%;
-        padding: 15px;
-      }
-
-      .product-card h3 {
-        font-size: 1rem;
-      }
-
-      .product-card .price {
-        font-size: 0.95rem;
-      }
-
-      .product-card button {
-        padding: 8px 20px;
-        font-size: 0.9rem;
-      }
-
-      .about p, .contact p {
-        font-size: 0.95rem;
-        max-width: 90%;
-      }
+    @media (max-width:400px){
+      header.hero h1 { font-size:2.2rem; }
+      header.hero p { font-size:1rem; }
+      .products h2, .about h2, .contact h2 { font-size:1.8rem; }
+      .product-card { flex:0 0 85%; padding:15px; }
+      .product-card h3 { font-size:1rem; }
+      .product-card .price { font-size:0.95rem; }
+      .product-card button { padding:8px 20px; font-size:0.9rem; }
+      .about p, .contact p { font-size:0.95rem; max-width:90%; }
     }
-
   </style>
 </head>
 <body>
 
   <!-- Navigation -->
   <nav>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
+    <a href="#" id="nav-products">Products</a>
+    <a href="#" id="nav-about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -269,12 +148,13 @@
   <header class="hero">
     <h1>PRCSN.Co</h1>
     <p>Crafted with Accuracy & Style</p>
+    <button onclick="showProducts()">Shop Now</button>
   </header>
 
   <!-- Products Section -->
-  <section class="products" id="products">
+  <section class="products" id="products-section">
     <h2>Our Active T-Shirts</h2>
-    <div class="product-list">
+    <div class="carousel">
       <div class="product-card">
         <img src="images/tshirt1.png" alt="Black Minimalist Tee" />
         <h3>Black Minimalist Tee</h3>
@@ -297,7 +177,7 @@
   </section>
 
   <!-- About Section -->
-  <section class="about" id="about">
+  <section class="about" id="about-section">
     <h2>About PRCSN.Co</h2>
     <p>
       PRCSN.Co delivers carefully crafted clothing designed with precision and style. Our tees combine comfort, durability, and a modern urban aesthetic for those who value quality and design.
@@ -316,16 +196,35 @@
     <p>&copy; 2026 PRCSN.Co. All rights reserved.</p>
   </footer>
 
-  <!-- Smooth Scroll JS -->
+  <!-- Floating Buy Now Button -->
+  <div class="floating-buy" onclick="window.scrollTo({top:document.getElementById('products-section').offsetTop, behavior:'smooth'})">
+    Buy Now
+  </div>
+
   <script>
-    const links = document.querySelectorAll('nav a');
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
+    // Section toggling
+    const productsSection = document.getElementById('products-section');
+    const aboutSection = document.getElementById('about-section');
+
+    document.getElementById('nav-products').addEventListener('click', (e)=>{
+      e.preventDefault();
+      productsSection.classList.remove('hidden');
+      aboutSection.classList.add('hidden');
+      productsSection.scrollIntoView({behavior:'smooth'});
     });
+
+    document.getElementById('nav-about').addEventListener('click', (e)=>{
+      e.preventDefault();
+      aboutSection.classList.remove('hidden');
+      productsSection.classList.add('hidden');
+      aboutSection.scrollIntoView({behavior:'smooth'});
+    });
+
+    function showProducts(){
+      productsSection.classList.remove('hidden');
+      aboutSection.classList.add('hidden');
+      productsSection.scrollIntoView({behavior:'smooth'});
+    }
   </script>
 
 </body>
