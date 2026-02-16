@@ -30,18 +30,18 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.15);
 }
 nav a{
-  font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.85rem; /* smaller text */
+  font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;
   display:flex;align-items:center;gap:5px;
   transition:color 0.3s;
 }
-nav a span.icon{font-size:1.1rem;color:var(--gray);} /* all icons gray */
+nav a span.icon{font-size:1.1rem;color:var(--gray);}
 nav a:hover{color:var(--highlight);}
 
-/* === Hero Section with parallax and cursive tagline === */
+/* === Hero Section with cursive tagline === */
 header.hero{
   position:relative;
   text-align:center;
-  padding:100px 20px 60px 20px; /* slightly reduced for mobile */
+  padding:100px 20px 60px 20px;
   background: url('images/hero-background.jpg') center/cover no-repeat;
   background-attachment: fixed;
   overflow:hidden;
@@ -65,7 +65,7 @@ header.hero p{
   font-size:1.2rem;
   color:var(--gray);
   margin-bottom:25px;
-  font-family: "Dancing Script", cursive; /* cursive font */
+  font-family: "Dancing Script", cursive;
   z-index:1;
 }
 header.hero button{
@@ -102,11 +102,10 @@ section{padding:50px 15px;}
 }
 .product-card:hover{
   transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,0.5);
-  border: 1px solid #f0f0f0; /* metallic accent */
+  border: 1px solid #f0f0f0;
 }
 .product-card img{
   width:100%;border-radius:8px;max-height:300px;margin-bottom:15px;background:#111;object-fit:cover;
-  display:block;loading:lazy; /* lazy load */
 }
 .product-card h3{font-size:1.1rem;margin-bottom:8px;font-weight:600;}
 .product-card .price{color:var(--gray);margin-bottom:12px;font-weight:500;}
@@ -161,7 +160,7 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
   header.hero h1{font-size:2.2rem;}
   header.hero p{font-size:1rem;}
   .products h2,.about h2,.contact h2{font-size:1.8rem;}
-  nav a{font-size:0.8rem;} /* slightly smaller text */
+  nav a{font-size:0.8rem;}
   .product-card{flex:0 0 85%;padding:15px;}
   .product-card h3{font-size:1rem;}
   .product-card .price{font-size:0.95rem;}
@@ -170,7 +169,6 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
 }
 </style>
 
-<!-- Google Fonts for Cursive -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -195,19 +193,19 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
   <h2>Our Active T-Shirts</h2>
   <div class="carousel">
     <div class="product-card">
-      <img src="images/tshirt1.webp" alt="Black Minimalist Tee" loading="lazy">
+      <img src="images/tshirt1.png" alt="Black Minimalist Tee">
       <h3>Black Minimalist Tee</h3>
       <p class="price">$25</p>
       <button>Buy Now</button>
     </div>
     <div class="product-card">
-      <img src="images/tshirt2.webp" alt="Blue Sharp Moves Tee" loading="lazy">
+      <img src="images/tshirt2.png" alt="Blue Sharp Moves Tee">
       <h3>Blue Sharp Moves Tee</h3>
       <p class="price">$28</p>
       <button>Buy Now</button>
     </div>
     <div class="product-card">
-      <img src="images/tshirt3.webp" alt="Black Sharp Moves Tee" loading="lazy">
+      <img src="images/tshirt3.png" alt="Black Sharp Moves Tee">
       <h3>Black Sharp Moves Tee</h3>
       <p class="price">$30</p>
       <button>Buy Now</button>
