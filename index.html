@@ -36,11 +36,11 @@ nav a{
 nav a span.icon{font-size:1.1rem;color:var(--gray);} /* all icons gray */
 nav a:hover{color:var(--highlight);}
 
-/* === Hero Section with parallax === */
+/* === Hero Section with parallax and adjusted tagline spacing === */
 header.hero{
   position:relative;
   text-align:center;
-  padding:120px 20px 80px 20px;
+  padding:100px 20px 60px 20px; /* slightly reduced padding for mobile */
   background: url('images/hero-background.jpg') center/cover no-repeat;
   background-attachment: fixed; /* subtle parallax */
   overflow:hidden;
@@ -52,14 +52,23 @@ header.hero::before{
 }
 header.hero h1{
   position:relative;
-  font-size:3rem;font-weight:900;color:var(--white);letter-spacing:2px;
-  margin-bottom:15px;z-index:1;
+  font-size:3rem;
+  font-weight:900;
+  color:var(--white);
+  letter-spacing:2px;
+  margin-bottom:8px; /* reduced to bring tagline closer */
+  z-index:1;
 }
 header.hero p{
-  position:relative;font-size:1.2rem;color:var(--gray);margin-bottom:25px;z-index:1;
+  position:relative;
+  font-size:1.2rem;
+  color:var(--gray);
+  margin-bottom:25px;
+  z-index:1;
 }
 header.hero button{
-  position:relative;background:var(--cta-color);
+  position:relative;
+  background:var(--cta-color);
   background-image: var(--metallic-gradient);
   color: var(--black);
   border:none;border-radius:50px;padding:12px 28px;
@@ -164,7 +173,7 @@ footer{text-align:center;padding:20px;background:var(--dark-gray);color:var(--gr
 <!-- Hero Section -->
 <header class="hero">
   <h1>PRCSN.Co</h1>
-  <p>Crafted with Accuracy & Style</p>
+  <p>Crafted with Accuracy</p>
   <button onclick="showProducts()">Shop Now</button>
 </header>
 
