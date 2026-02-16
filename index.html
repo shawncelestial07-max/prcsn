@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRCSN.Co - PRECISION Clothing</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>PRCSN.Co</h1>
+    <p>Precision Clothing – Style in Every Stitch</p>
+  </header>
+
+  <!-- Products Section -->
+  <section class="products">
+    <h2>Our Active T-Shirts</h2>
+    <div class="product-list">
+      <div class="product-card">
+        <img src="images/tshirt1.png" alt="T-shirt 1">
+        <h3>Black Minimalist Tee</h3>
+        <p class="price">$25</p>
+        <button onclick="selectProduct('tshirt1', 'Black Minimalist Tee', 25)">Order</button>
+      </div>
+      <div class="product-card">
+        <img src="images/tshirt2.png" alt="T-shirt 2">
+        <h3>Gray Urban Tee</h3>
+        <p class="price">$28</p>
+        <button onclick="selectProduct('tshirt2', 'Gray Urban Tee', 28)">Order</button>
+      </div>
+      <div class="product-card">
+        <img src="images/tshirt3.png" alt="T-shirt 3">
+        <h3>Black Streetwear Tee</h3>
+        <p class="price">$30</p>
+        <button onclick="selectProduct('tshirt3', 'Black Streetwear Tee', 30)">Order</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Section -->
+  <section class="order">
+    <h2>Place Your Order</h2>
+    <form id="orderForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="text" id="product" placeholder="Product Name" readonly required>
+      <input type="number" id="quantity" placeholder="Quantity" min="1" value="1" required>
+      <button type="submit">Submit Order</button>
+    </form>
+    <p id="statusMessage"></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 PRCSN.Co. All rights reserved.</p>
+  </footer>
+
+  <!-- Firebase Config -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
