@@ -8,11 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
-:root {
+:root{
   --black:#0a0a0a;
-  --dark:#141414;
-  --gray:#999;
+  --dark:#1a1a1a;
   --white:#fff;
+  --gray:#aaa;
 }
 
 *{
@@ -31,7 +31,7 @@ body{
 nav{
   position:fixed;
   width:100%;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0.95);
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -41,7 +41,7 @@ nav{
 
 .logo{font-weight:800;letter-spacing:2px;}
 
-.cart{
+.cart-btn{
   cursor:pointer;
 }
 
@@ -49,12 +49,12 @@ nav{
   background:white;
   color:black;
   padding:2px 8px;
-  border-radius:50px;
+  border-radius:20px;
   font-size:0.8rem;
   margin-left:5px;
 }
 
-/* HERO WITH VIDEO */
+/* HERO VIDEO */
 .hero{
   position:relative;
   height:100vh;
@@ -70,10 +70,8 @@ nav{
   width:100%;
   height:100%;
   object-fit:cover;
-  top:0;
-  left:0;
+  opacity:0.35;
   z-index:-1;
-  opacity:0.4;
 }
 
 .hero h1{
@@ -88,7 +86,7 @@ nav{
   cursor:pointer;
 }
 
-/* PRODUCTS */
+/* SECTIONS */
 section{
   padding:100px 20px;
   text-align:center;
@@ -96,11 +94,12 @@ section{
 
 .collections-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
   margin-top:40px;
 }
 
+/* PRODUCT */
 .product-card{
   background:var(--dark);
   padding:20px;
@@ -128,12 +127,12 @@ section{
   opacity:0;
 }
 
-.product-card:hover img.back{
-  opacity:1;
-}
-
 .product-card:hover img.front{
   opacity:0;
+}
+
+.product-card:hover img.back{
+  opacity:1;
 }
 
 /* MODAL */
@@ -149,7 +148,6 @@ section{
   pointer-events:none;
   transition:0.3s;
   padding:20px;
-  text-align:center;
 }
 
 .modal.active{
@@ -162,7 +160,7 @@ section{
   border-radius:10px;
 }
 
-.close{
+.close-modal{
   position:absolute;
   top:20px;
   right:30px;
@@ -192,33 +190,53 @@ section{
   padding:10px 25px;
   border:none;
   cursor:pointer;
-  margin-top:10px;
 }
 
 /* CART PANEL */
 .cart-panel{
   position:fixed;
-  right:-400px;
   top:0;
+  right:-400px;
   width:350px;
   height:100%;
   background:#111;
   padding:20px;
   transition:0.4s;
-  overflow:auto;
   z-index:2000;
+  overflow:auto;
 }
 
 .cart-panel.active{
   right:0;
 }
 
-.cart-item{
+.cart-header{
   display:flex;
   justify-content:space-between;
+  align-items:center;
+}
+
+.cart-close{
+  cursor:pointer;
+  font-size:1.5rem;
+}
+
+.cart-item{
   margin:15px 0;
   border-bottom:1px solid #333;
   padding-bottom:10px;
+}
+
+.qty{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:5px;
+}
+
+.qty button{
+  padding:3px 8px;
+  cursor:pointer;
 }
 
 .total{
@@ -231,7 +249,7 @@ section{
 
 <nav>
   <div class="logo">PRCSN.Co</div>
-  <div class="cart" onclick="toggleCart()">
+  <div class="cart-btn" onclick="toggleCart()">
     🛒 <span id="cart-count">0</span>
   </div>
 </nav>
@@ -242,129 +260,151 @@ section{
   </video>
   <div>
     <h1>PRECISION</h1>
-    <button onclick="scrollToProducts()">Shop Now</button>
+    <button onclick="scrollToSection('collections')">Shop Now</button>
   </div>
 </header>
 
-<section id="products">
-  <h2>Collection</h2>
-  <div class="collections-grid">
+<section id="collections">
+<h2>Collections</h2>
 
-    <div class="product-card" onclick="openModal('images/tshirt1.png','Black Minimalist Tee',25)">
-      <img src="images/tshirt1.png" class="front">
-      <img src="images/tshirt1-back.png" class="back">
-      <h3>Black Minimalist Tee</h3>
-      <p>$25</p>
-    </div>
+<div class="collections-grid">
 
-    <div class="product-card" onclick="openModal('images/tshirt2.png','Blue Sharp Moves Tee',28)">
-      <img src="images/tshirt2.png" class="front">
-      <img src="images/tshirt2-back.png" class="back">
-      <h3>Blue Sharp Moves Tee</h3>
-      <p>$28</p>
-    </div>
+<!-- ALL YOUR ORIGINAL PRODUCTS -->
+<script>
+const products = [
+{img:'images/tshirt1.png',back:'images/tshirt1-back.png',title:'Black Minimalist Tee',price:25},
+{img:'images/tshirt2.png',back:'images/tshirt2-back.png',title:'Blue Sharp Moves Tee',price:28},
+{img:'images/tshirt3.png',back:'images/tshirt3-back.png',title:'Black Sharp Moves Tee',price:30},
+{img:'images/tshirt4.png',back:'images/tshirt4-back.png',title:'T-Shirt 4',price:32},
+{img:'images/tshirt5.png',back:'images/tshirt5-back.png',title:'T-Shirt 5',price:32},
+{img:'images/tshirt6.png',back:'images/tshirt6-back.png',title:'T-Shirt 6',price:34},
+{img:'images/tshirt7.png',back:'images/tshirt7-back.png',title:'T-Shirt 7',price:34},
+];
+</script>
 
-  </div>
+<div id="product-container"></div>
+
+</div>
 </section>
 
-<!-- PRODUCT MODAL -->
+<!-- MODAL -->
 <div class="modal" id="modal">
-  <div class="close" onclick="closeModal()">✕</div>
-  <img id="modal-img">
-  <h3 id="modal-title"></h3>
-  <p id="modal-price"></p>
+<div class="close-modal" onclick="closeModal()">✕</div>
+<img id="modal-img">
+<h3 id="modal-title"></h3>
+<p id="modal-price"></p>
 
-  <p style="color:#aaa;margin-top:10px;">
-    Premium 100% cotton. Relaxed fit.<br>
-    Model is 6'0 wearing size L.<br>
-    Ships in 2-4 business days.
-  </p>
+<p style="color:#aaa;margin-top:10px;">
+Premium 100% cotton. Relaxed fit.<br>
+Model is 6'0 wearing size L.<br>
+Ships in 2–4 business days.
+</p>
 
-  <div class="sizes">
-    <div class="size" onclick="selectSize(this)">S</div>
-    <div class="size" onclick="selectSize(this)">M</div>
-    <div class="size" onclick="selectSize(this)">L</div>
-    <div class="size" onclick="selectSize(this)">XL</div>
-  </div>
-
-  <button onclick="addToCart()">Add to Cart</button>
+<div class="sizes">
+<div class="size" onclick="selectSize(this)">S</div>
+<div class="size" onclick="selectSize(this)">M</div>
+<div class="size" onclick="selectSize(this)">L</div>
+<div class="size" onclick="selectSize(this)">XL</div>
 </div>
 
-<!-- CART PANEL -->
+<button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- CART -->
 <div class="cart-panel" id="cart-panel">
-  <h2>Your Cart</h2>
-  <div id="cart-items"></div>
-  <div class="total" id="cart-total"></div>
+<div class="cart-header">
+<h2>Your Cart</h2>
+<div class="cart-close" onclick="toggleCart()">←</div>
+</div>
+<div id="cart-items"></div>
+<div class="total" id="cart-total"></div>
 </div>
 
 <script>
+const container=document.getElementById("product-container");
+
+products.forEach((p,i)=>{
+container.innerHTML+=`
+<div class="product-card" onclick="openModal(${i})">
+<img src="${p.img}" class="front">
+<img src="${p.back}" class="back">
+<h3>${p.title}</h3>
+<p>$${p.price}</p>
+</div>`;
+});
+
 let cart=[];
 let selectedSize=null;
 let currentProduct=null;
 
-function scrollToProducts(){
-  document.getElementById("products").scrollIntoView({behavior:"smooth"});
-}
-
-function openModal(img,title,price){
-  document.getElementById("modal").classList.add("active");
-  document.getElementById("modal-img").src=img;
-  document.getElementById("modal-title").innerText=title;
-  document.getElementById("modal-price").innerText="$"+price;
-  currentProduct={img,title,price};
+function openModal(index){
+currentProduct=products[index];
+document.getElementById("modal-img").src=currentProduct.img;
+document.getElementById("modal-title").innerText=currentProduct.title;
+document.getElementById("modal-price").innerText="$"+currentProduct.price;
+document.getElementById("modal").classList.add("active");
 }
 
 function closeModal(){
-  document.getElementById("modal").classList.remove("active");
-  selectedSize=null;
-  document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
+document.getElementById("modal").classList.remove("active");
+selectedSize=null;
+document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
 }
 
 function selectSize(el){
-  document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
-  el.classList.add("active");
-  selectedSize=el.innerText;
+document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
+el.classList.add("active");
+selectedSize=el.innerText;
 }
 
 function addToCart(){
-  if(!selectedSize){
-    alert("Please select a size");
-    return;
-  }
+if(!selectedSize){alert("Select a size");return;}
 
-  cart.push({...currentProduct,size:selectedSize});
-  updateCart();
-  closeModal();
+cart.push({...currentProduct,size:selectedSize,qty:1});
+updateCart();
+closeModal();
 }
 
 function updateCart(){
-  const cartItems=document.getElementById("cart-items");
-  cartItems.innerHTML="";
-  let total=0;
+let items=document.getElementById("cart-items");
+items.innerHTML="";
+let total=0;
 
-  cart.forEach((item,index)=>{
-    total+=item.price;
-    cartItems.innerHTML+=`
-      <div class="cart-item">
-        <div>
-          ${item.title} (${item.size})<br>$${item.price}
-        </div>
-        <div onclick="removeItem(${index})" style="cursor:pointer">✕</div>
-      </div>
-    `;
-  });
+cart.forEach((item,index)=>{
+total+=item.price*item.qty;
+items.innerHTML+=`
+<div class="cart-item">
+${item.title} (${item.size}) - $${item.price}
+<div class="qty">
+<button onclick="changeQty(${index},-1)">-</button>
+${item.qty}
+<button onclick="changeQty(${index},1)">+</button>
+<button onclick="removeItem(${index})">✕</button>
+</div>
+</div>`;
+});
 
-  document.getElementById("cart-total").innerText="Total: $"+total;
-  document.getElementById("cart-count").innerText=cart.length;
+document.getElementById("cart-total").innerText="Total: $"+total;
+document.getElementById("cart-count").innerText=cart.length;
+}
+
+function changeQty(index,amount){
+cart[index].qty+=amount;
+if(cart[index].qty<=0) cart.splice(index,1);
+updateCart();
 }
 
 function removeItem(index){
-  cart.splice(index,1);
-  updateCart();
+cart.splice(index,1);
+updateCart();
 }
 
 function toggleCart(){
-  document.getElementById("cart-panel").classList.toggle("active");
+document.getElementById("cart-panel").classList.toggle("active");
+}
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 </script>
 
