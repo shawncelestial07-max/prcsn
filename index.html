@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRECISION - Precision Clothing</title>
+<title>PRCSN.Co Shop - Precision Clothing</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 
@@ -16,7 +16,6 @@
   --accent:#f0f0f0;
 }
 
-/* GLOBAL */
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins","Arial",sans-serif;}
 body{
   background:var(--black);
@@ -27,7 +26,7 @@ body{
 }
 body.loaded{opacity:1;}
 
-/* PREMIUM LOADER */
+/* LOADER */
 .loader{
   position:fixed;
   inset:0;
@@ -36,10 +35,8 @@ body.loaded{opacity:1;}
   justify-content:center;
   align-items:center;
   z-index:2000;
-  flex-direction:column;
 }
 .loader h1{
-  font-size:2rem;
   letter-spacing:4px;
   animation:pulse 1.5s infinite alternate;
 }
@@ -69,7 +66,11 @@ nav{
   z-index:1200;
 }
 .hamburger span{height:2px;background:white;}
-.logo{letter-spacing:2px;font-size:1rem;}
+
+.logo{
+  letter-spacing:2px;
+  font-size:1rem;
+}
 
 .nav-links{
   position:fixed;
@@ -109,10 +110,10 @@ header.hero button{
 }
 
 /* SECTIONS */
-section{padding:80px 20px;text-align:center;transition:opacity 0.6s ease;}
+section{padding:80px 20px;text-align:center;}
 h2{margin-bottom:30px;font-size:2rem;}
 
-/* GLOWING NEW RELEASE */
+/* GLOW NEW RELEASE */
 .showcase-card{
   background:var(--dark-gray);
   padding:30px;
@@ -121,12 +122,12 @@ h2{margin-bottom:30px;font-size:2rem;}
   margin:0 auto;
   animation:glow 2s infinite alternate;
   cursor:pointer;
+  transition:0.3s ease;
 }
 @keyframes glow{
   from{box-shadow:0 0 15px rgba(255,255,255,0.2);}
   to{box-shadow:0 0 35px rgba(255,255,255,0.6);}
 }
-
 .badge{
   background:#ff3b3b;
   padding:5px 12px;
@@ -136,25 +137,23 @@ h2{margin-bottom:30px;font-size:2rem;}
   margin-bottom:10px;
 }
 
-.product-card, .showcase-card{
-  transition:transform 0.3s ease;
-}
-.product-card:hover, .showcase-card:hover{
-  transform:scale(1.05);
-}
-
-.carousel{
-  display:flex;
-  overflow-x:auto;
-  gap:20px;
-}
 .product-card{
   flex:0 0 80%;
   background:var(--dark-gray);
   padding:20px;
   border-radius:12px;
   cursor:pointer;
+  transition:0.3s ease;
 }
+.product-card:hover,
+.showcase-card:hover{transform:scale(1.05);}
+
+.carousel{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+}
+
 .product-card img,
 .showcase-card img{
   width:100%;
@@ -162,7 +161,7 @@ h2{margin-bottom:30px;font-size:2rem;}
   margin-bottom:15px;
 }
 
-/* FULLSCREEN MODAL */
+/* MODAL */
 .modal{
   position:fixed;
   inset:0;
@@ -182,7 +181,7 @@ h2{margin-bottom:30px;font-size:2rem;}
 }
 .modal img{
   max-width:80%;
-  max-height:60vh;
+  max-height:50vh;
   border-radius:12px;
   margin-bottom:20px;
 }
@@ -192,6 +191,7 @@ h2{margin-bottom:30px;font-size:2rem;}
   border:none;
   background:var(--accent);
   cursor:pointer;
+  margin-top:15px;
 }
 .close-modal{
   position:absolute;
@@ -201,7 +201,24 @@ h2{margin-bottom:30px;font-size:2rem;}
   cursor:pointer;
 }
 
-/* FOOTER */
+/* SIZE SELECTOR */
+.sizes{
+  display:flex;
+  gap:10px;
+  margin:15px 0;
+}
+.size-option{
+  padding:8px 15px;
+  border:1px solid white;
+  cursor:pointer;
+  transition:0.3s;
+}
+.size-option.active,
+.size-option:hover{
+  background:white;
+  color:black;
+}
+
 footer{text-align:center;padding:20px;background:#111;color:#777;}
 </style>
 </head>
@@ -209,7 +226,7 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <h1>PRECISION</h1>
+  <h1>PRCSN.Co</h1>
 </div>
 
 <!-- NAV -->
@@ -217,7 +234,7 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
-  <div class="logo">PRECISION</div>
+  <div class="logo">PRCSN.Co Shop</div>
 </nav>
 
 <div class="nav-links" id="nav-links">
@@ -226,14 +243,12 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
   <a onclick="scrollToSection('contact')">Contact</a>
 </div>
 
-<!-- HERO -->
 <header class="hero">
   <h1>PRECISION</h1>
   <p>Crafted with Accuracy</p>
   <button onclick="scrollToSection('new')">Shop Now</button>
 </header>
 
-<!-- NEW RELEASE -->
 <section id="new">
   <h2>New Release</h2>
   <div class="showcase-card" onclick="openModal('images/tshirt1.png','Black Minimalist Tee','$25')">
@@ -244,7 +259,6 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
   </div>
 </section>
 
-<!-- COLLECTIONS -->
 <section id="collections">
   <h2>Collections</h2>
   <div class="carousel">
@@ -261,14 +275,13 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
   <p>Email: contact@precision.co</p>
   <p>Instagram: @precision</p>
 </section>
 
-<footer>© 2026 PRECISION. All rights reserved.</footer>
+<footer>© 2026 PRCSN.Co. All rights reserved.</footer>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
@@ -276,37 +289,47 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
   <img id="modal-img">
   <h3 id="modal-title"></h3>
   <p id="modal-price"></p>
+
+  <div class="sizes">
+    <div class="size-option" onclick="selectSize(this)">S</div>
+    <div class="size-option" onclick="selectSize(this)">M</div>
+    <div class="size-option" onclick="selectSize(this)">L</div>
+    <div class="size-option" onclick="selectSize(this)">XL</div>
+  </div>
+
   <button>Buy Now</button>
 </div>
 
 <script>
-/* LOADER */
 window.addEventListener("load",()=>{
   document.body.classList.add("loaded");
   document.getElementById("loader").style.display="none";
 });
 
-/* HAMBURGER */
 const hamburger=document.getElementById("hamburger");
 const navLinks=document.getElementById("nav-links");
 hamburger.addEventListener("click",()=>{
   navLinks.classList.toggle("active");
 });
 
-/* SMOOTH SCROLL */
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-/* MODAL */
 function openModal(img,title,price){
   document.getElementById("modal-img").src=img;
   document.getElementById("modal-title").innerText=title;
   document.getElementById("modal-price").innerText=price;
   document.getElementById("modal").classList.add("active");
 }
+
 function closeModal(){
   document.getElementById("modal").classList.remove("active");
+}
+
+function selectSize(element){
+  document.querySelectorAll(".size-option").forEach(el=>el.classList.remove("active"));
+  element.classList.add("active");
 }
 </script>
 
