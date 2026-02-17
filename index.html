@@ -113,7 +113,7 @@ header.hero button{
 section{padding:80px 20px;text-align:center;}
 h2{margin-bottom:30px;font-size:2rem;}
 
-/* GLOW NEW RELEASE */
+/* NEW RELEASE */
 .showcase-card{
   background:var(--dark-gray);
   padding:30px;
@@ -137,22 +137,21 @@ h2{margin-bottom:30px;font-size:2rem;}
   margin-bottom:10px;
 }
 
+/* COLLECTIONS GRID */
+.collections-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+
 .product-card{
-  flex:0 0 80%;
   background:var(--dark-gray);
   padding:20px;
   border-radius:12px;
   cursor:pointer;
   transition:0.3s ease;
 }
-.product-card:hover,
-.showcase-card:hover{transform:scale(1.05);}
-
-.carousel{
-  display:flex;
-  overflow-x:auto;
-  gap:20px;
-}
+.product-card:hover{transform:scale(1.05);}
 
 .product-card img,
 .showcase-card img{
@@ -185,14 +184,6 @@ h2{margin-bottom:30px;font-size:2rem;}
   border-radius:12px;
   margin-bottom:20px;
 }
-.modal h3{margin-bottom:10px;}
-.modal button{
-  padding:10px 25px;
-  border:none;
-  background:var(--accent);
-  cursor:pointer;
-  margin-top:15px;
-}
 .close-modal{
   position:absolute;
   top:20px;
@@ -219,22 +210,28 @@ h2{margin-bottom:30px;font-size:2rem;}
   color:black;
 }
 
+.modal button{
+  padding:10px 25px;
+  border:none;
+  background:var(--accent);
+  cursor:pointer;
+  margin-top:15px;
+}
+
 footer{text-align:center;padding:20px;background:#111;color:#777;}
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div class="loader" id="loader">
   <h1>PRCSN.Co</h1>
 </div>
 
-<!-- NAV -->
 <nav>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
-  <div class="logo">PRCSN SHOP</div>
+  <div class="logo">PRCSN.Co Shop</div>
 </nav>
 
 <div class="nav-links" id="nav-links">
@@ -254,36 +251,64 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
   <div class="showcase-card" onclick="openModal('images/tshirt1.png','Black Minimalist Tee','$25')">
     <div class="badge">🔥 NEW DROP</div>
     <img src="images/tshirt1.png">
-    <h3>"CHROME PRCSN"</h3>
-    <p>700</p>
+    <h3>Black Minimalist Tee</h3>
+    <p>$25</p>
   </div>
 </section>
 
 <section id="collections">
   <h2>Collections</h2>
-  <div class="carousel">
+  <div class="collections-grid">
+
+    <!-- Existing -->
     <div class="product-card" onclick="openModal('images/tshirt2.png','Blue Sharp Moves Tee','$28')">
       <img src="images/tshirt2.png">
-      <h3>"PRCSN BASIC BLACK"</h3>
-      <p>599</p>
+      <h3>Blue Sharp Moves Tee</h3>
+      <p>$28</p>
     </div>
+
     <div class="product-card" onclick="openModal('images/tshirt3.png','Black Sharp Moves Tee','$30')">
       <img src="images/tshirt3.png">
-      <h3>"PRCSN BASIC BLUE"</h3>
-      <p>599</p>
+      <h3>Black Sharp Moves Tee</h3>
+      <p>$30</p>
     </div>
+
+    <!-- NEW SHIRTS 4-7 -->
+    <div class="product-card" onclick="openModal('images/tshirt4.png','T-Shirt 4','$32')">
+      <img src="images/tshirt4.png">
+      <h3>T-Shirt 4</h3>
+      <p>$32</p>
+    </div>
+
+    <div class="product-card" onclick="openModal('images/tshirt5.png','T-Shirt 5','$32')">
+      <img src="images/tshirt5.png">
+      <h3>T-Shirt 5</h3>
+      <p>$32</p>
+    </div>
+
+    <div class="product-card" onclick="openModal('images/tshirt6.png','T-Shirt 6','$34')">
+      <img src="images/tshirt6.png">
+      <h3>T-Shirt 6</h3>
+      <p>$34</p>
+    </div>
+
+    <div class="product-card" onclick="openModal('images/tshirt7.png','T-Shirt 7','$34')">
+      <img src="images/tshirt7.png">
+      <h3>T-Shirt 7</h3>
+      <p>$34</p>
+    </div>
+
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Facebook: @PRCSN Co.</p>
-  <p>Instagram: @prcsn.co</p>
+  <p>Email: contact@precision.co</p>
+  <p>Instagram: @precision</p>
 </section>
 
 <footer>© 2026 PRCSN.Co. All rights reserved.</footer>
 
-<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="close-modal" onclick="closeModal()">✕</div>
   <img id="modal-img">
@@ -335,6 +360,3 @@ function selectSize(element){
 
 </body>
 </html>
-
-
-
