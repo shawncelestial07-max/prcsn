@@ -5,159 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PRCSN.Co Shop - Precision Clothing</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --black:#0a0a0a;
-  --dark-gray:#1c1c1c;
-  --gray:#aaaaaa;
-  --white:#ffffff;
-  --accent:#f0f0f0;
+  --dark:#141414;
+  --gray:#999;
+  --white:#fff;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins","Arial",sans-serif;}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:"Montserrat",sans-serif;
+}
+
 body{
-  background:var(--black);
-  color:var(--white);
-  line-height:1.6;
-  opacity:0;
-  transition:opacity 0.8s ease;
-}
-body.loaded{opacity:1;}
-
-/* LOADER */
-.loader{
-  position:fixed;
-  inset:0;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-}
-.loader h1{
-  letter-spacing:4px;
-  animation:pulse 1.5s infinite alternate;
-}
-@keyframes pulse{
-  from{opacity:0.4;}
-  to{opacity:1;}
+  background:linear-gradient(to bottom,#0a0a0a,#111);
+  color:white;
 }
 
 /* NAV */
 nav{
   position:fixed;
   width:100%;
-  background:var(--dark-gray);
+  background:rgba(0,0,0,0.9);
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  padding:15px 20px;
+  padding:15px 25px;
   z-index:1000;
 }
-.hamburger{
-  width:24px;
-  height:18px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+
+.logo{font-weight:800;letter-spacing:2px;}
+
+.cart{
   cursor:pointer;
-  margin-right:15px;
-  z-index:1200;
-}
-.hamburger span{height:2px;background:white;}
-
-.logo{
-  letter-spacing:2px;
-  font-size:1rem;
 }
 
-.nav-links{
-  position:fixed;
-  top:0;
-  left:-250px;
-  width:220px;
-  height:100%;
-  background:var(--dark-gray);
-  padding-top:80px;
-  padding-left:25px;
+#cart-count{
+  background:white;
+  color:black;
+  padding:2px 8px;
+  border-radius:50px;
+  font-size:0.8rem;
+  margin-left:5px;
+}
+
+/* HERO WITH VIDEO */
+.hero{
+  position:relative;
+  height:100vh;
   display:flex;
-  flex-direction:column;
-  gap:25px;
-  transition:0.4s ease;
-  z-index:900;
-}
-.nav-links.active{left:0;}
-.nav-links a{text-transform:uppercase;cursor:pointer;}
-
-/* HERO */
-header.hero{
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:140px 20px 80px;
+  overflow:hidden;
 }
-header.hero h1{font-size:2.8rem;letter-spacing:3px;}
-header.hero p{
-  margin:15px 0 25px;
-  font-family:"Dancing Script",cursive;
-  color:var(--gray);
+
+.hero video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
+  z-index:-1;
+  opacity:0.4;
 }
-header.hero button{
+
+.hero h1{
+  font-size:3rem;
+  letter-spacing:4px;
+}
+
+.hero button{
+  margin-top:20px;
   padding:12px 30px;
   border:none;
-  border-radius:40px;
-  background:var(--accent);
   cursor:pointer;
 }
 
-/* SECTIONS */
-section{padding:80px 20px;text-align:center;}
-h2{margin-bottom:30px;font-size:2rem;}
-
-/* NEW RELEASE */
-.showcase-card{
-  background:var(--dark-gray);
-  padding:30px;
-  border-radius:15px;
-  max-width:400px;
-  margin:0 auto;
-  animation:glow 2s infinite alternate;
-  cursor:pointer;
-  transition:0.3s ease;
-}
-@keyframes glow{
-  from{box-shadow:0 0 15px rgba(255,255,255,0.2);}
-  to{box-shadow:0 0 35px rgba(255,255,255,0.6);}
-}
-.badge{
-  background:#ff3b3b;
-  padding:5px 12px;
-  border-radius:20px;
-  font-size:0.8rem;
-  display:inline-block;
-  margin-bottom:10px;
+/* PRODUCTS */
+section{
+  padding:100px 20px;
+  text-align:center;
 }
 
-/* COLLECTIONS GRID */
 .collections-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  margin-top:40px;
 }
 
 .product-card{
-  background:var(--dark-gray);
+  background:var(--dark);
   padding:20px;
   border-radius:12px;
+  position:relative;
+  overflow:hidden;
   cursor:pointer;
-  transition:0.3s ease;
+  transition:0.3s;
 }
-.product-card:hover{transform:scale(1.05);}
 
-.product-card img,
-.showcase-card img{
+.product-card:hover{
+  transform:translateY(-5px);
+}
+
+.product-card img{
   width:100%;
   border-radius:10px;
-  margin-bottom:15px;
+  transition:0.4s;
+}
+
+.product-card img.back{
+  position:absolute;
+  top:20px;
+  left:20px;
+  opacity:0;
+}
+
+.product-card:hover img.back{
+  opacity:1;
+}
+
+.product-card:hover img.front{
+  opacity:0;
 }
 
 /* MODAL */
@@ -171,20 +147,22 @@ h2{margin-bottom:30px;font-size:2rem;}
   flex-direction:column;
   opacity:0;
   pointer-events:none;
-  transition:0.4s ease;
-  z-index:3000;
+  transition:0.3s;
+  padding:20px;
+  text-align:center;
 }
+
 .modal.active{
   opacity:1;
   pointer-events:auto;
 }
+
 .modal img{
-  max-width:80%;
-  max-height:50vh;
-  border-radius:12px;
-  margin-bottom:20px;
+  max-width:300px;
+  border-radius:10px;
 }
-.close-modal{
+
+.close{
   position:absolute;
   top:20px;
   right:30px;
@@ -192,20 +170,20 @@ h2{margin-bottom:30px;font-size:2rem;}
   cursor:pointer;
 }
 
-/* SIZE SELECTOR */
 .sizes{
   display:flex;
   gap:10px;
   margin:15px 0;
 }
-.size-option{
-  padding:8px 15px;
+
+.size{
   border:1px solid white;
+  padding:8px 15px;
   cursor:pointer;
-  transition:0.3s;
 }
-.size-option.active,
-.size-option:hover{
+
+.size.active,
+.size:hover{
   background:white;
   color:black;
 }
@@ -213,148 +191,180 @@ h2{margin-bottom:30px;font-size:2rem;}
 .modal button{
   padding:10px 25px;
   border:none;
-  background:var(--accent);
   cursor:pointer;
-  margin-top:15px;
+  margin-top:10px;
 }
 
-footer{text-align:center;padding:20px;background:#111;color:#777;}
+/* CART PANEL */
+.cart-panel{
+  position:fixed;
+  right:-400px;
+  top:0;
+  width:350px;
+  height:100%;
+  background:#111;
+  padding:20px;
+  transition:0.4s;
+  overflow:auto;
+  z-index:2000;
+}
+
+.cart-panel.active{
+  right:0;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  margin:15px 0;
+  border-bottom:1px solid #333;
+  padding-bottom:10px;
+}
+
+.total{
+  margin-top:20px;
+  font-weight:600;
+}
 </style>
 </head>
 <body>
 
-<div class="loader" id="loader">
-  <h1>PRCSN.Co</h1>
-</div>
-
 <nav>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+  <div class="logo">PRCSN.Co</div>
+  <div class="cart" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
   </div>
-  <div class="logo">PRCSN.Co Shop</div>
 </nav>
 
-<div class="nav-links" id="nav-links">
-  <a onclick="scrollToSection('new')">New Release</a>
-  <a onclick="scrollToSection('collections')">Collections</a>
-  <a onclick="scrollToSection('contact')">Contact</a>
-</div>
-
 <header class="hero">
-  <h1>PRECISION</h1>
-  <p>Crafted with Accuracy</p>
-  <button onclick="scrollToSection('new')">Shop Now</button>
+  <video autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <div>
+    <h1>PRECISION</h1>
+    <button onclick="scrollToProducts()">Shop Now</button>
+  </div>
 </header>
 
-<section id="new">
-  <h2>New Release</h2>
-  <div class="showcase-card" onclick="openModal('images/tshirt1.png','Black Minimalist Tee','$25')">
-    <div class="badge">🔥 NEW DROP</div>
-    <img src="images/tshirt1.png">
-    <h3>Black Minimalist Tee</h3>
-    <p>$25</p>
-  </div>
-</section>
-
-<section id="collections">
-  <h2>Collections</h2>
+<section id="products">
+  <h2>Collection</h2>
   <div class="collections-grid">
 
-    <!-- Existing -->
-    <div class="product-card" onclick="openModal('images/tshirt2.png','Blue Sharp Moves Tee','$28')">
-      <img src="images/tshirt2.png">
+    <div class="product-card" onclick="openModal('images/tshirt1.png','Black Minimalist Tee',25)">
+      <img src="images/tshirt1.png" class="front">
+      <img src="images/tshirt1-back.png" class="back">
+      <h3>Black Minimalist Tee</h3>
+      <p>$25</p>
+    </div>
+
+    <div class="product-card" onclick="openModal('images/tshirt2.png','Blue Sharp Moves Tee',28)">
+      <img src="images/tshirt2.png" class="front">
+      <img src="images/tshirt2-back.png" class="back">
       <h3>Blue Sharp Moves Tee</h3>
       <p>$28</p>
     </div>
 
-    <div class="product-card" onclick="openModal('images/tshirt3.png','Black Sharp Moves Tee','$30')">
-      <img src="images/tshirt3.png">
-      <h3>Black Sharp Moves Tee</h3>
-      <p>$30</p>
-    </div>
-
-    <!-- NEW SHIRTS 4-7 -->
-    <div class="product-card" onclick="openModal('images/tshirt4.png','T-Shirt 4','$32')">
-      <img src="images/tshirt4.png">
-      <h3>T-Shirt 4</h3>
-      <p>$32</p>
-    </div>
-
-    <div class="product-card" onclick="openModal('images/tshirt5.png','T-Shirt 5','$32')">
-      <img src="images/tshirt5.png">
-      <h3>T-Shirt 5</h3>
-      <p>$32</p>
-    </div>
-
-    <div class="product-card" onclick="openModal('images/tshirt6.png','T-Shirt 6','$34')">
-      <img src="images/tshirt6.png">
-      <h3>T-Shirt 6</h3>
-      <p>$34</p>
-    </div>
-
-    <div class="product-card" onclick="openModal('images/tshirt7.png','T-Shirt 7','$34')">
-      <img src="images/tshirt7.png">
-      <h3>T-Shirt 7</h3>
-      <p>$34</p>
-    </div>
-
   </div>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: contact@precision.co</p>
-  <p>Instagram: @precision</p>
-</section>
-
-<footer>© 2026 PRCSN.Co. All rights reserved.</footer>
-
+<!-- PRODUCT MODAL -->
 <div class="modal" id="modal">
-  <div class="close-modal" onclick="closeModal()">✕</div>
+  <div class="close" onclick="closeModal()">✕</div>
   <img id="modal-img">
   <h3 id="modal-title"></h3>
   <p id="modal-price"></p>
 
+  <p style="color:#aaa;margin-top:10px;">
+    Premium 100% cotton. Relaxed fit.<br>
+    Model is 6'0 wearing size L.<br>
+    Ships in 2-4 business days.
+  </p>
+
   <div class="sizes">
-    <div class="size-option" onclick="selectSize(this)">S</div>
-    <div class="size-option" onclick="selectSize(this)">M</div>
-    <div class="size-option" onclick="selectSize(this)">L</div>
-    <div class="size-option" onclick="selectSize(this)">XL</div>
+    <div class="size" onclick="selectSize(this)">S</div>
+    <div class="size" onclick="selectSize(this)">M</div>
+    <div class="size" onclick="selectSize(this)">L</div>
+    <div class="size" onclick="selectSize(this)">XL</div>
   </div>
 
-  <button>Buy Now</button>
+  <button onclick="addToCart()">Add to Cart</button>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cart-panel">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  <div class="total" id="cart-total"></div>
 </div>
 
 <script>
-window.addEventListener("load",()=>{
-  document.body.classList.add("loaded");
-  document.getElementById("loader").style.display="none";
-});
+let cart=[];
+let selectedSize=null;
+let currentProduct=null;
 
-const hamburger=document.getElementById("hamburger");
-const navLinks=document.getElementById("nav-links");
-hamburger.addEventListener("click",()=>{
-  navLinks.classList.toggle("active");
-});
-
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+function scrollToProducts(){
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
 }
 
 function openModal(img,title,price){
+  document.getElementById("modal").classList.add("active");
   document.getElementById("modal-img").src=img;
   document.getElementById("modal-title").innerText=title;
-  document.getElementById("modal-price").innerText=price;
-  document.getElementById("modal").classList.add("active");
+  document.getElementById("modal-price").innerText="$"+price;
+  currentProduct={img,title,price};
 }
 
 function closeModal(){
   document.getElementById("modal").classList.remove("active");
+  selectedSize=null;
+  document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
 }
 
-function selectSize(element){
-  document.querySelectorAll(".size-option").forEach(el=>el.classList.remove("active"));
-  element.classList.add("active");
+function selectSize(el){
+  document.querySelectorAll(".size").forEach(s=>s.classList.remove("active"));
+  el.classList.add("active");
+  selectedSize=el.innerText;
+}
+
+function addToCart(){
+  if(!selectedSize){
+    alert("Please select a size");
+    return;
+  }
+
+  cart.push({...currentProduct,size:selectedSize});
+  updateCart();
+  closeModal();
+}
+
+function updateCart(){
+  const cartItems=document.getElementById("cart-items");
+  cartItems.innerHTML="";
+  let total=0;
+
+  cart.forEach((item,index)=>{
+    total+=item.price;
+    cartItems.innerHTML+=`
+      <div class="cart-item">
+        <div>
+          ${item.title} (${item.size})<br>$${item.price}
+        </div>
+        <div onclick="removeItem(${index})" style="cursor:pointer">✕</div>
+      </div>
+    `;
+  });
+
+  document.getElementById("cart-total").innerText="Total: $"+total;
+  document.getElementById("cart-count").innerText=cart.length;
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  updateCart();
+}
+
+function toggleCart(){
+  document.getElementById("cart-panel").classList.toggle("active");
 }
 </script>
 
