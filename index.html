@@ -17,6 +17,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins","Arial",sans-serif;}
+
 body{
   background:var(--black);
   color:var(--white);
@@ -63,7 +64,6 @@ nav{
   justify-content:space-between;
   cursor:pointer;
   margin-right:15px;
-  z-index:1200;
 }
 .hamburger span{height:2px;background:white;}
 
@@ -85,7 +85,6 @@ nav{
   flex-direction:column;
   gap:25px;
   transition:0.4s ease;
-  z-index:900;
 }
 .nav-links.active{left:0;}
 .nav-links a{text-transform:uppercase;cursor:pointer;}
@@ -109,17 +108,17 @@ header.hero button{
   cursor:pointer;
 }
 
-/* SECTIONS */
+/* SECTION */
 section{padding:80px 20px;text-align:center;}
-h2{margin-bottom:30px;font-size:2rem;}
+h2{margin-bottom:40px;font-size:2rem;}
 
 /* NEW RELEASE */
 .showcase-card{
   background:var(--dark-gray);
   padding:30px;
   border-radius:15px;
-  max-width:400px;
-  margin:0 auto;
+  max-width:420px;
+  margin:0 auto 60px;
   animation:glow 2s infinite alternate;
   cursor:pointer;
   transition:0.3s ease;
@@ -137,27 +136,39 @@ h2{margin-bottom:30px;font-size:2rem;}
   margin-bottom:10px;
 }
 
-/* COLLECTIONS GRID */
+/* SMALL COLLECTION GRID */
 .collections-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
   gap:20px;
+  max-width:1000px;
+  margin:0 auto;
 }
 
 .product-card{
   background:var(--dark-gray);
-  padding:20px;
-  border-radius:12px;
+  padding:15px;
+  border-radius:10px;
   cursor:pointer;
   transition:0.3s ease;
 }
-.product-card:hover{transform:scale(1.05);}
+.product-card:hover{
+  transform:scale(1.05);
+}
 
-.product-card img,
-.showcase-card img{
+.product-card img{
   width:100%;
-  border-radius:10px;
-  margin-bottom:15px;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.product-card h3{
+  font-size:0.9rem;
+}
+
+.product-card p{
+  font-size:0.85rem;
+  color:var(--gray);
 }
 
 /* MODAL */
@@ -179,8 +190,8 @@ h2{margin-bottom:30px;font-size:2rem;}
   pointer-events:auto;
 }
 .modal img{
-  max-width:80%;
-  max-height:50vh;
+  max-width:85%;
+  max-height:55vh;
   border-radius:12px;
   margin-bottom:20px;
 }
@@ -192,7 +203,6 @@ h2{margin-bottom:30px;font-size:2rem;}
   cursor:pointer;
 }
 
-/* SIZE SELECTOR */
 .sizes{
   display:flex;
   gap:10px;
@@ -218,7 +228,12 @@ h2{margin-bottom:30px;font-size:2rem;}
   margin-top:15px;
 }
 
-footer{text-align:center;padding:20px;background:#111;color:#777;}
+footer{
+  text-align:center;
+  padding:20px;
+  background:#111;
+  color:#777;
+}
 </style>
 </head>
 <body>
@@ -257,10 +272,9 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
 </section>
 
 <section id="collections">
-  <h2>Collections</h2>
+  <h2>All Collections</h2>
   <div class="collections-grid">
 
-    <!-- Existing -->
     <div class="product-card" onclick="openModal('images/tshirt2.png','Blue Sharp Moves Tee','$28')">
       <img src="images/tshirt2.png">
       <h3>Blue Sharp Moves Tee</h3>
@@ -273,7 +287,6 @@ footer{text-align:center;padding:20px;background:#111;color:#777;}
       <p>$30</p>
     </div>
 
-    <!-- NEW SHIRTS 4-7 -->
     <div class="product-card" onclick="openModal('images/tshirt4.png','T-Shirt 4','$32')">
       <img src="images/tshirt4.png">
       <h3>T-Shirt 4</h3>
